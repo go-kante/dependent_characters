@@ -1,16 +1,36 @@
-var character = ['a','i','u','e','o'];//環境依存文字の配列
-// ボタンがクリックされたときにテキストボックスの内容を取得
-document.getElementById('btn').addEventListener('click', () => {
-    event.preventDefault()
-    const regex = new RegExp(`(${character})`, "gi"); // 大文字小文字を無視 
-    const textBox = document.getElementById('floatingTextarea2');
-    const value = textBox.value;
-    textBox.style.color = 'red';
+var character = ['aiueo'] // 環境依存文字の配列
+const editableBox = document.getElementById('floatingTextarea2');// 入力されたテキスト
+const output = document.getElementById('output');
+
+document.getElementById('btn').addEventListener('click', (event) => {
+  event.preventDefault();
+  const content = editableBox.value;
+  const regex = new RegExp(`[${character.join('')}]`, 'g'); // 配列を正規表現に変換
+
+  if (regex.test(content)) {
+    output.textContent = "環境依存文字が含まれています。";
+    output.style.color = "red";
+  } else {
+    output.textContent = "環境依存文字は含まれていません。";
+    output.style.color = "green";
+    }
+});
+
+    //  if (regex.match(content)){
+    //         textBox.style.color = 'red';
+    //     }else{
+    //         output.textContent = "一致する単語はありません";
+    //     }
+       
+      
 
     // if(value.include(regex)){
     //     textBox.style.color = "red";
-    // }
-}); 
+
+        // if(textBox.include(character)){
+        // textBox.style.color = "red";
+        // }
+
        
     // const textBox = document.getElementById('floatingTextarea2').value;
     // 
