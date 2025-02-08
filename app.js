@@ -16,9 +16,10 @@ app.get('/', (req, res) => {
   );
 });
 
+
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
+  user: 'kanta',
   password: 'sk0422OK',
   database: 'detect_d_chara'
 });
@@ -31,5 +32,9 @@ connection.connect((err) => {
     console.log('success');
   });
 
-  
-
+  // connection.query(
+  //   `insert into user (user_id, content) values (1, '${todo}');`,
+  //   (error, results) => {
+  //    SQL実行後に行う処理を書く
+  //   }
+  // );
